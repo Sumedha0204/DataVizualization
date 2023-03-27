@@ -249,7 +249,7 @@ function createPieChart(type) {
         otherCount = 0;
     }
 
-    const width = 580;
+    const width = 500;
     const height = 580;
 
     pie_svg = d3.select("#pie_svg")
