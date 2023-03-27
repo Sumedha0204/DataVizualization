@@ -4,13 +4,44 @@
     <title>Homework #4: Innovative Visualization Design - CSE 578 - Spring 2023</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" />
     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- Function for radial charts -->
+    <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3-scale-radial.js"></script>
     <script src="main.js"></script>
     <style>
+
+
+        #stream_div {
+            float:left;
+            width:990px;
+            height: 625px;
+            padding:10px;
+        }
+        #pie_div {
+            float:right;
+            width:600px;
+            height: 625px;
+            padding:10px;
+        }
+
+        #stream_svg {
+            width: 970px;
+            height:570px;
+            background-color: white;
+            border: 1px solid lightgray;
+            border-radius: 3px;
+        }
+        #pie_svg {
+            width: 570px;
+            height:570px;
+            background-color: white;
+            border: 1px solid lightgray;
+            border-radius: 3px;
+        }
 
     .tooltip {
     position: absolute;
     text-align: center;
-    width: 120px;
+    width: 70px;
     padding: 2px;
     font-size: 0.7em;
     background: black;
@@ -31,23 +62,34 @@ view raw
 </head>
 <body>
 <div class="myContainer">
-    <h2 class="text-center">Homework #3: Innovative Visualization Design</h2>
+    <h2 class="text-center">Homework #4: Innovative Visualization Design</h2>
     <h3 class="text-center">Sumedha Chillara - chillara.sumedha@gmail.com</h3>
-    <h4 class="text-center">Steam timeline graph: Dinosaurs wrt time </h4>
+    <h5 class="text-center">Distribution of Dinosaur species over time and countries  </h5>
     <!-- Add a bit of text -->
 
     <figure>
-        <div id="my_dataviz" style="margin: 0 auto; width: 100%; height: 100vh;">
+        <div id="my_dataviz">
             <!-- D3 chart goes here -->
         <figcaption>
-
-            This is a description of the Steam timeline graph that shows the evolution of dinosaurs over time.
-            The x-axis represents the time period in millions of years and the y-axis represents the number of dinosaur species during that time.
-            The graph shows that the number of dinosaur species increased during the Triassic and Jurassic periods, but decreased sharply during the Cretaceous period, leading to their eventual extinction.
+            This contains a Stream-graph showing the evolution of dinosaur types over time
+            which also displays the distribution of respective type across various countries.
         </figcaption>
+
+            <div id="stream_div"  class="border border-dark rounded bg-light shadow-sm">
+                Evolution of dinosaur types across various time periods
+                <svg id="stream_svg"
+            ></svg>
+            </div>
+
+            <div id="pie_div" class="border border-dark rounded bg-light shadow-sm">
+                Distribution of dinosaurs across various countries
+                <svg id="pie_svg"></svg>
+            </div>
         </div>
 
+
     </figure>
+
 </div>
 </body>
 
