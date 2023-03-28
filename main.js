@@ -309,22 +309,55 @@ function createPieChart(type) {
         d3.select(this).select("path")
             .style("stroke", "black")
             .style("stroke-width", 4)
-            .style("opacity", 1);
-        var ttext = pie_svg.append("text")
+            .style("opacity", 1)
+            .text(i.data.total);
+
+        const text1 = pie_svg.append("text")
             .attr("text-anchor", "middle")
             .attr("dy", ".35em")
+
             .text(i.data.name + ":" + i.data.count);
 
-    });
+
+    text1.classed("hover-text", true); // Add a class to the text element
 
     g.on("mouseout", function(d) {
         d3.select(this).select("path")
             .style("stroke", "black")
             .style("stroke-width", 1)
-            .style("opacity", 1);
-        pie_svg.selectAll("text").remove();
+            .style("opacity", 1)
+
+
+        //pie_svg.selectAll("text").remove();
+        pie_svg.selectAll(".hover-text").remove(); // Remove only the text elements with the "hover-text" class
 
     });
+    });
+
+
+    const legend = g.selectAll(".legend")
+        .data(pie(data))
+        .enter()
+        .append("g")
+        .attr("class", "legend")
+        .attr("transform", function (d, i) {
+            return "translate(" + (-220) + "," + ((i * 20) - ((data.length - 1) * 39)) + ")";
+        });
+
+
+    legend.append("rect")
+        .attr("width", 10)
+        .attr("height", 10)
+        .attr("fill", function(d){ return color(d)})
+
+
+
+    legend.append("text")
+        .attr("y", 10)
+        .attr("x", 20)
+        .text(function(d) { return d.data.name;  })
+        .style("font-size", "14px")
+
 
 }
 
